@@ -1,0 +1,55 @@
+import { JsonFile, ReleasableCommits } from "projen";
+import { GithubCredentials } from "projen/lib/github";
+import { NodePackageManager } from "projen/lib/javascript";
+import { TypeScriptProject } from "projen/lib/typescript";
+
+class Project extends TypeScriptProject {
+  constructor() {
+    super({
+      name: "java-properties",
+      projenrcTs: true,
+      packageManager: NodePackageManager.PNPM,
+      devDeps: ["typedoc-plugin-mdn-links"],
+      githubOptions: {
+        mergify: false,
+        projenCredentials: GithubCredentials.fromApp(),
+      },
+      pullRequestTemplate: false,
+      prettier: true,
+      docgen: true,
+      buildWorkflowOptions: {
+        mutableBuild: false,
+      },
+      defaultReleaseBranch: "main",
+      releasableCommits: ReleasableCommits.featuresAndFixes(),
+    });
+
+    // prettier
+    const prettierTask = this.addTask("prettier", {
+      exec: "prettier --write .",
+    });
+    this.testTask.spawn(prettierTask);
+    this.prettier!.ignoreFile?.exclude(
+      this.package.lockFile,
+      this.docsDirectory,
+    );
+
+    // typedoc
+    const typedocJsonc = new JsonFile(this, "typedoc.jsonc", {
+      obj: {
+        plugin: ["typedoc-plugin-mdn-links"],
+        jsDocCompatibility: false,
+      },
+    });
+
+    // node package
+    this.npmignore?.exclude(typedocJsonc.path, this.docsDirectory);
+  }
+
+  override preSynthesize(): void {
+    // ignore managed files for prettier
+    this.prettier?.ignoreFile?.exclude(...this.files.map((file) => file.path));
+  }
+}
+
+new Project().synth();
