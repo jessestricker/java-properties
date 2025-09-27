@@ -1,5 +1,5 @@
 {
-  "name": "java-properties",
+  "name": "@jessestricker/java-properties",
   "scripts": {
     "build": "npx projen build",
     "bump": "npx projen bump",
@@ -47,9 +47,6 @@
   "pnpm": {},
   "main": "lib/index.js",
   "license": "Apache-2.0",
-  "publishConfig": {
-    "access": "public"
-  },
   "version": "0.0.0",
   "jest": {
     "coverageProvider": "v8",

@@ -9,6 +9,7 @@ class Project extends TypeScriptProject {
       name: "java-properties",
       projenrcTs: true,
       packageManager: NodePackageManager.PNPM,
+      packageName: "@jessestricker/java-properties",
       devDeps: ["typedoc-plugin-mdn-links"],
       githubOptions: {
         mergify: false,
@@ -22,6 +23,7 @@ class Project extends TypeScriptProject {
       },
       defaultReleaseBranch: "main",
       releasableCommits: ReleasableCommits.featuresAndFixes(),
+      releaseToNpm: true,
     });
 
     // prettier
