@@ -1,3 +1,4 @@
+import path from "node:path/posix";
 import { JsonFile, ReleasableCommits } from "projen";
 import { GithubCredentials } from "projen/lib/github";
 import { NodePackageManager } from "projen/lib/javascript";
@@ -43,6 +44,10 @@ class Project extends TypeScriptProject {
         jsDocCompatibility: false,
       },
     });
+    this.gitattributes.addAttributes(
+      path.join("/", this.docsDirectory, "**"),
+      "linguist-generated",
+    );
 
     // node package
     this.npmignore?.exclude(typedocJsonc.path, this.docsDirectory);
