@@ -1,7 +1,7 @@
 import path from "node:path/posix";
 import { JsonFile, ReleasableCommits } from "projen";
 import { GithubCredentials } from "projen/lib/github";
-import { NodePackageManager } from "projen/lib/javascript";
+import { NodePackageManager, NpmAccess } from "projen/lib/javascript";
 import { TypeScriptProject } from "projen/lib/typescript";
 
 class Project extends TypeScriptProject {
@@ -10,6 +10,7 @@ class Project extends TypeScriptProject {
       name: "java-properties",
       projenrcTs: true,
       packageManager: NodePackageManager.PNPM,
+      npmAccess: NpmAccess.PUBLIC,
       packageName: "@jessestricker/java-properties",
       authorName: "Jesse Stricker",
       description: "Format and parse Java properties files.",

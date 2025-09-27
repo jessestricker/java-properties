@@ -57,6 +57,9 @@
   "main": "lib/index.js",
   "license": "Apache-2.0",
   "homepage": "https://jessestricker.github.io/java-properties",
+  "publishConfig": {
+    "access": "public"
+  },
   "version": "0.0.0",
   "jest": {
     "coverageProvider": "v8",
