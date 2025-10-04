@@ -3,7 +3,7 @@
   "description": "Format and parse Java properties files.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jessestricker/java-properties"
+    "url": "https://github.com/jessestricker/java-properties.git"
   },
   "scripts": {
     "build": "npx projen build",
