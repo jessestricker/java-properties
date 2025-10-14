@@ -27,7 +27,7 @@ export interface StringifyOptions {
  *
  * @see https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/Properties.html
  */
-export class JavaProperties {
+export namespace JavaProperties {
   /**
    * Converts the given JavaScript object to the Java properties file format.
    *
@@ -39,7 +39,7 @@ export class JavaProperties {
    * @param options The options used during conversion, optional.
    * @returns A string in the Java properties file format.
    */
-  static stringify(
+  export function stringify(
     values: Record<string, unknown>,
     options: StringifyOptions = {},
   ): string {
@@ -61,9 +61,5 @@ export class JavaProperties {
     }
 
     return text;
-  }
-
-  private constructor() {
-    throw new TypeError("JavaProperties is not constructible.");
   }
 }
