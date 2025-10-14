@@ -30,6 +30,7 @@ class Project extends TypeScriptProject {
       defaultReleaseBranch: "main",
       releasableCommits: ReleasableCommits.featuresAndFixes(),
       releaseToNpm: true,
+      npmTrustedPublishing: true,
     });
 
     // prettier
