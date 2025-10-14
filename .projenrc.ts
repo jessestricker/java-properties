@@ -14,7 +14,7 @@ class Project extends TypeScriptProject {
       packageName: "@jessestricker/java-properties",
       authorName: "Jesse Stricker",
       description: "Format and parse Java properties files.",
-      repository: "https://github.com/jessestricker/java-properties",
+      repository: "https://github.com/jessestricker/java-properties.git",
       homepage: "https://jessestricker.github.io/java-properties",
       devDeps: ["typedoc-plugin-mdn-links"],
       githubOptions: {
