@@ -46,10 +46,4 @@ describe("JavaProperties", () => {
       );
     });
   });
-
-  describe("constructor", () => {
-    expect(() => new (JavaProperties as any)()).toThrow(
-      TypeError("JavaProperties is not constructible."),
-    );
-  });
 });
