@@ -1,5 +1,5 @@
 import path from "node:path/posix";
-import { JsonFile, ReleasableCommits } from "projen";
+import { JsonFile } from "projen";
 import { GithubCredentials } from "projen/lib/github";
 import { NodePackageManager, NpmAccess } from "projen/lib/javascript";
 import { TypeScriptProject } from "projen/lib/typescript";
@@ -28,7 +28,6 @@ class Project extends TypeScriptProject {
         mutableBuild: false,
       },
       defaultReleaseBranch: "main",
-      releasableCommits: ReleasableCommits.featuresAndFixes(),
       releaseToNpm: true,
       npmTrustedPublishing: true,
     });
